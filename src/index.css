@@ -1,13 +1,60 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --desktop-container-width: 1320px;
+  /* --mobile-container-width: 335px; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  padding: 0;
+  margin: 0;
+}
+
+span,
+a {
+  display: inline-block;
+}
+
+/* box sizing */
+*,
+*::before,
+*::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+ /* give standard styling to all ul and il that have a class attribute
+ Removing padding */
+ul,
+ol {
+  list-style: none;
+}
+
+ /* a elements, reset to default styles */
+a,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+ /* Inheriting fonts for inputs and buttons */
+button {
+  cursor: pointer;
+}
+
+.container, 
+[class*="__container"] {
+  width: 100%;
+  height: 100%;
+  max-width: var(--desktop-container-width);
+  padding: 0 20px;
+  margin: 0 auto;
 }
