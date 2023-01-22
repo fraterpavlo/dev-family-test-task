@@ -1,4 +1,5 @@
 import { ICardProps } from "./productCard-interfaces";
+import mockPhoto from "../no-image.svg";
 
 export function ProductCard({
   productData,
@@ -12,7 +13,7 @@ export function ProductCard({
     >
       <div className="card__img-container">
         <img
-          src={productData?.image?.desktop?.webp_x1}
+          src={productData?.image?.desktop?.webp_x1 ?? mockPhoto}
           alt="camera"
           className="card__img"
         />

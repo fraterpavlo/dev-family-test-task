@@ -14,11 +14,18 @@ import { getFiltersState, getProductsData } from "../App/selectors";
 import { EBrandsFilterList } from "./filtersAside-interfaces";
 import MyLazyTextInput from "./UI/myLazyTextInput";
 import { baseURL } from "../index";
+// import queryString from "query-string";
 
 export function FiltersAside() {
   const dispatch = useAppDispatch();
   const filters = useAppSelector(getFiltersState);
   const products = useAppSelector(getProductsData);
+
+  // useEffect(() => {
+  //   const searchString = queryString.parse(window.location.search);
+  //   console.log(window.location.search);
+  //   console.log(searchString);
+  // }, []);
 
   useEffect(() => {
     const queryObj = {
