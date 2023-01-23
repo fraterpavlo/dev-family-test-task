@@ -1,4 +1,4 @@
-import { IState } from "./catalogPageSlice-interfaces";
+import { IState } from "./reducers/catalogPageSlice.model";
 export const getFiltersState = (state: { catalogPage: IState }) =>
   state.catalogPage.filtersState;
 export const getResultsState = (state: { catalogPage: IState }) =>

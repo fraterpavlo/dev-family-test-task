@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import catalogPageReducer from "./catalogPageSlice";
+import catalogPageReducer from "./reducers/catalogPageSlice";
 
 export const store = configureStore({
   reducer: {

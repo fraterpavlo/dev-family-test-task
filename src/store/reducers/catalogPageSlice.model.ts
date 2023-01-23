@@ -1,4 +1,4 @@
-import { IProductData } from "../components/productCard-interfaces";
+import { IProductData } from "../../components/card/productCard.model";
 
 export interface IAction {
   type: string;

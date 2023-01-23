@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { IAction, IResultsState, IState } from "./catalogPageSlice-interfaces";
+import { IAction, IResultsState, IState } from "./catalogPageSlice.model";
 
 export const fetchProducts = createAsyncThunk(
   "catalogPage/fetchProducts",

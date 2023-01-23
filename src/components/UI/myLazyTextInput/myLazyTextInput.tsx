@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { ILazyTextInputProps } from "./myLazyTextInput-interfaces";
+import { ILazyTextInputProps } from "./myLazyTextInputmodel.";
 
 const MyLazyTextInput = (props: ILazyTextInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -18,7 +18,7 @@ const MyLazyTextInput = (props: ILazyTextInputProps) => {
     <input
       type="text"
       ref={inputRef}
-      className={props.classNames?.join(" ") ?? ""}
+      className={props.classNames ?? ""}
       placeholder={props.placeholder}
       defaultValue={props.defaultValue ?? ""}
       onBlur={onBlur}

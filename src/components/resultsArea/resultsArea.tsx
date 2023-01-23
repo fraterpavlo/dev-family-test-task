@@ -1,7 +1,7 @@
-import { useAppSelector } from "../App/hooks";
-import { getResultsState } from "../App/selectors";
-import ProductCard from "./productCard";
-import { IProductData } from "./resultsArea-interfaces";
+import { useAppSelector } from "../../hooks/hooks";
+import { getResultsState } from "../../store/selectors";
+import ProductCard from "../card/productCard";
+import { IProductData } from "./resultsArea.model";
 
 export function ResultsArea() {
   const results = useAppSelector(getResultsState);

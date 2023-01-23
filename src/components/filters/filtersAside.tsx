@@ -4,16 +4,16 @@ import {
   setMaxPrice,
   setMinPrice,
   toggleSelectedBrand,
-} from "../App/catalogPageSlice";
+} from "../../store/reducers/catalogPageSlice";
 import {
   useAppDispatch,
   useAppSelector,
   convertObjToQueryString,
-} from "../App/hooks";
-import { getFiltersState, getProductsData } from "../App/selectors";
-import { EBrandsFilterList } from "./filtersAside-interfaces";
-import MyLazyTextInput from "./UI/myLazyTextInput";
-import { baseURL } from "../index";
+} from "../../hooks/hooks";
+import { getFiltersState, getProductsData } from "../../store/selectors";
+import { EItemValueofBrands } from "./filtersAside.model";
+import MyLazyTextInput from "../UI/myLazyTextInput/myLazyTextInput";
+import { baseURL } from "../../index";
 // import queryString from "query-string";
 
 export function FiltersAside() {
@@ -36,6 +36,8 @@ export function FiltersAside() {
     const encodedSearchQuery = convertObjToQueryString(queryObj)
       .replace(/%5B/g, "[")
       .replace(/%5D/g, "]");
+    // const encodedSearchQuery = encodeURI(convertObjToQueryString(queryObj));
+
     const fullQueryPath = `/api/pages/obektivy${
       encodedSearchQuery ? "?" : ""
     } ${encodedSearchQuery}`;
@@ -43,33 +45,19 @@ export function FiltersAside() {
 
     baseURL.search = encodedSearchQuery;
     dispatch(fetchProducts(baseURL.href));
-  }, [dispatch, filters]);
+  }, [filters]);
 
-  const onInputMinPriceCallBack = useCallback(
-    (inputValue: string) => {
-      dispatch(setMinPrice(inputValue));
-    },
-    [dispatch]
-  );
+  const onInputMinPriceCallBack = useCallback((inputValue: string) => {
+    dispatch(setMinPrice(inputValue));
+  }, []);
 
-  const onInputMaxPriceCallBack = useCallback(
-    (inputValue: string) => {
-      dispatch(setMaxPrice(inputValue));
-    },
-    [dispatch]
-  );
+  const onInputMaxPriceCallBack = useCallback((inputValue: string) => {
+    dispatch(setMaxPrice(inputValue));
+  }, []);
 
-  const onSelectBrandsCallBack = useCallback(
-    (brand: string) => {
-      dispatch(toggleSelectedBrand(brand));
-    },
-    [dispatch]
-  );
-
-  const currentPriceFilterValues = {
-    min: filters?.minPrice,
-    max: filters?.maxPrice,
-  };
+  const onSelectBrandsCallBack = useCallback((brand: string) => {
+    dispatch(toggleSelectedBrand(brand));
+  }, []);
 
   return (
     <aside className="filters-container filters">
@@ -82,15 +70,13 @@ export function FiltersAside() {
         <span className="price-filter__label">Цена, ₽</span>
         <div className="price-filter__inputs-container">
           <MyLazyTextInput
-            classNames={["price-filter__min-input"]}
-            defaultValue={
-              currentPriceFilterValues.min ?? filters?.minPrice ?? ""
-            }
+            classNames={"price-filter__input price-filter__input_min"}
+            defaultValue={filters?.minPrice ?? ""}
             placeholder={"min"}
             onInputCallBack={onInputMinPriceCallBack}
           />
           <MyLazyTextInput
-            classNames={["price-filter__max-input"]}
+            classNames={"price-filter__input price-filter__input_max"}
             defaultValue={filters?.maxPrice ?? ""}
             placeholder={"max"}
             onInputCallBack={onInputMaxPriceCallBack}
@@ -104,17 +90,17 @@ export function FiltersAside() {
             <input
               className="brand-filter-item"
               type="checkbox"
-              onChange={() => onSelectBrandsCallBack("1")}
+              onChange={() => onSelectBrandsCallBack(EItemValueofBrands.Canon)}
             />
-            {EBrandsFilterList.Canon}
+            Canon
           </label>
           <label className="brand-filter__brands-item brand-filter-item">
             <input
               className="brand-filter-item"
               type="checkbox"
-              onChange={() => onSelectBrandsCallBack("9")}
+              onChange={() => onSelectBrandsCallBack(EItemValueofBrands.Nikon)}
             />
-            {EBrandsFilterList.Nikon}
+            Nikon
           </label>
         </div>
       </div>

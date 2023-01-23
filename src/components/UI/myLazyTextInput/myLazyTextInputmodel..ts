@@ -1,6 +1,6 @@
 export interface ILazyTextInputProps {
   onInputCallBack: (str: string) => void;
-  classNames?: string[];
+  classNames?: string;
   placeholder?: string;
   defaultValue?: string;
 }
