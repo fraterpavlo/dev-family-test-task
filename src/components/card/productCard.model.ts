@@ -38,5 +38,4 @@ export interface IProductData {
 export interface ICardProps {
   onClickCallBack?: (e: React.MouseEvent<HTMLDivElement>) => void;
   productData: IProductData;
-  classNamesArr?: string[];
 }

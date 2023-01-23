@@ -1,0 +1,17 @@
+$mainColor1: #1B1B1B;
+$mainColor2: #DBDBDB;
+$color1: #898989;
+$color2: #7993A6;
+$desktopBreakPoint: 1100;
+$tabletBreakPoint: 800;
+$mobileBreakPoint: 600;
+$maxWidth: 1920;
+$minWidth: 320;
+$maxWidthContainer: 1300;
+$containerPadding: 40;
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+%mainFont {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+}

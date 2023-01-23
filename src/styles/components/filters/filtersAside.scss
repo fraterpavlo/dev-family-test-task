@@ -1,0 +1,143 @@
+.catalog-page__filters {
+  flex-basis: 17%;
+  max-width: 224px;
+}
+
+.filters {
+  width: 100%;
+  height: 100%;
+
+  &__total-count-container {}
+
+  &__products-category-title {
+    margin-top: 5px;
+    @extend %mainFont;
+    @include fontz(32px, 45px, 700);
+    color: $mainColor1;
+  }
+
+  &__price-filter-container {
+    margin-top: 13px;
+  }
+
+  &__brand-filter-container {
+    margin-top: 24px;
+  }
+}
+
+.total-count {
+  display: flex;
+  column-gap: 3px;
+  @extend %mainFont;
+  @include fontz(14px, 20px, 500);
+  color: $color1;
+
+  &__label {}
+
+  &__output {}
+}
+
+
+
+.price-filter {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+
+  &__label {
+    @extend %mainFont;
+    @include fontz(16px, 22px, 700);
+    color: $mainColor1;
+  }
+
+  &__inputs-container {
+    display: flex;
+  }
+
+  &__input {
+    max-width: 50%;
+    padding: 9px 12px;
+    border: 1px solid $mainColor2;
+    @extend %mainFont;
+    @include fontz(14px, 20px, 500);
+    color: $mainColor1;
+    cursor: pointer;
+
+    &_min {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &_max {
+      border-radius: 0 4px 4px 0;
+    }
+  }
+}
+
+
+
+.brand-filter {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+
+  &__label {
+    @extend %mainFont;
+    @include fontz(16px, 22px, 700);
+    color: $mainColor1;
+  }
+
+  &__brands-list-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  &__brands-item {}
+}
+
+.brand-filter-item {
+  display: block;
+  padding-left: 27px;
+  @extend %mainFont;
+  @include fontz(14px, 20px, 500);
+  color: $mainColor1;
+  cursor: pointer;
+
+  &__input {
+
+    &_original {
+      position: absolute;
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+    }
+
+    &_custom {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      margin-left: -27px;
+      border: 1px solid $mainColor2;
+      border-radius: 4px;
+    }
+
+    &_original:checked+&_custom {
+      background-color: $color2;
+
+      &::after {
+        content: '✔';
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        color: #ffffff;
+        font-size: 10px;
+      }
+    }
+
+    &_original:focus+&_custom {
+      border: 3px solid $color1;
+    }
+  }
+}

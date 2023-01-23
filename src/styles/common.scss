@@ -1,8 +1,3 @@
-:root {
-  --desktop-container-width: 1320px;
-  /* --mobile-container-width: 335px; */
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -22,14 +17,14 @@ a {
   box-sizing: border-box;
 }
 
- /* give standard styling to all ul and il that have a class attribute
+/* give standard styling to all ul and il that have a class attribute
  Removing padding */
 ul,
 ol {
   list-style: none;
 }
 
- /* a elements, reset to default styles */
+/* a elements, reset to default styles */
 a,
 a:visited {
   color: inherit;
@@ -45,16 +40,16 @@ a:hover {
   outline: none;
 }
 
- /* Inheriting fonts for inputs and buttons */
+/* Inheriting fonts for inputs and buttons */
 button {
   cursor: pointer;
 }
 
-.container, 
+.container,
 [class*="__container"] {
   width: 100%;
   height: 100%;
-  max-width: var(--desktop-container-width);
+  max-width: $containerWidth + px;
   padding: 0 20px;
   margin: 0 auto;
 }

@@ -33,10 +33,10 @@ export function FiltersAside() {
       "price[min]": filters.minPrice ?? "",
       "price[max]": filters.maxPrice ?? "",
     };
-    const encodedSearchQuery = convertObjToQueryString(queryObj)
-      .replace(/%5B/g, "[")
-      .replace(/%5D/g, "]");
-    // const encodedSearchQuery = encodeURI(convertObjToQueryString(queryObj));
+    // const encodedSearchQuery = convertObjToQueryString(queryObj)
+    //   .replace(/%5B/g, "[")
+    //   .replace(/%5D/g, "]");
+    const encodedSearchQuery = decodeURI(convertObjToQueryString(queryObj));
 
     const fullQueryPath = `/api/pages/obektivy${
       encodedSearchQuery ? "?" : ""
@@ -60,7 +60,7 @@ export function FiltersAside() {
   }, []);
 
   return (
-    <aside className="filters-container filters">
+    <aside className="catalog-page__filters filters">
       <div className="filters__total-count-container total-count">
         <span className="total-count__label">Товаров </span>
         <span className="total-count__output">{products.length}</span>
@@ -84,22 +84,24 @@ export function FiltersAside() {
         </div>
       </div>
       <div className="filters__brand-filter-container brand-filter">
-        <span className="brand-filter__label"></span>
+        <span className="brand-filter__label">Бренд</span>
         <div className="brand-filter__brands-list-container">
           <label className="brand-filter__brands-item brand-filter-item">
             <input
-              className="brand-filter-item"
+              className="brand-filter-item__input_original"
               type="checkbox"
               onChange={() => onSelectBrandsCallBack(EItemValueofBrands.Canon)}
             />
+            <span className="brand-filter-item__input_custom"></span>
             Canon
           </label>
           <label className="brand-filter__brands-item brand-filter-item">
             <input
-              className="brand-filter-item"
+              className="brand-filter-item__input_original"
               type="checkbox"
               onChange={() => onSelectBrandsCallBack(EItemValueofBrands.Nikon)}
             />
+            <span className="brand-filter-item__input_custom"></span>
             Nikon
           </label>
         </div>

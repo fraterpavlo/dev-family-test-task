@@ -12,7 +12,7 @@ export function ResultsArea() {
   ));
 
   return (
-    <div className={"catalog-page__results-area"}>
+    <div className={"catalog-page__results-area results-area"}>
       {!results.isLoaded && <strong>Loading...</strong>}
       {results.error && <strong>{results.error}</strong>}
       {results.isLoaded && cardList}
