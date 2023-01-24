@@ -1,17 +1,16 @@
 .results-area__item {
   width: 100%;
   max-width: calc(25% - 18px);
-  max-height: 400px;
 
   @media (max-width: ($desktopBreakPoint + px)) {
-    max-width: calc(33.33% - 16px);
+    max-width: calc(33.33% - 13.333px);
+  }
+
+  @media (max-width: (($desktopBreakPoint + $tabletBreakPoint)/2 + px)) {
+    max-width: calc(50% - 7.5px);
   }
 
   @media (max-width: ($tabletBreakPoint + px)) {
-    max-width: calc(50% - 12px);
-  }
-
-  @media (max-width: ($mobileBreakPoint + px)) {
     max-width: 100%;
   }
 }
@@ -19,34 +18,66 @@
 .card {
   display: flex;
   flex-direction: column;
-  border: 1px solid #E6E6E6;
+  border: 1px solid #e6e6e6;
   border-radius: 4px;
-  overflow: hidden;
+  overflow: hidden; 
   transition: all 0.3s linear;
   cursor: pointer;
-  min-height: 400px;
+
+  @media (max-width: ($mobileBreakPoint + px)) {
+    padding: 15px 0;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 5px;
+    border: none;
+    
+    &:not(:last-child) {
+      border-bottom: 1px solid #e6e6e6;
+    }
+  }
+
+  &:hover {
+    transform: scale(102%);
+
+    @media (max-width: ($mobileBreakPoint + px)) {
+      transform: scale(100%);
+    }
+  }
 
   &__img-container {
+    flex-basis: 60%;
     width: 100%;
     height: 100%;
-    min-height: 242px;
     overflow: hidden;
+
+    @media (max-width: ($mobileBreakPoint + px)) {
+      flex-basis: 38%;
+    }
   }
 
   &__img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: fill;
     object-position: top;
+
+    @media (max-width: ($mobileBreakPoint + px)) {
+      border-radius: 4px;
+    }
   }
 
   &__description-container {
+    flex-basis: 40%;
     height: 100%;
     padding: 12px 16px 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    row-gap: 5px;
+
+    @media (max-width: ($mobileBreakPoint + px)) {
+      padding: 0;
+      flex-basis: 60%;
+    }
   }
 
   &__title {
@@ -54,49 +85,106 @@
     @extend %mainFont;
     @include fontz(14px, 20px, 500);
     color: $mainColor1;
+
+    @include adaptiveValue("font-size", 14, 10, $maxWidthContainer, $desktopBreakPoint);
+    @include adaptiveValue("font-size", 14, 10, $desktopBreakPoint, ($desktopBreakPoint + $tabletBreakPoint)/2);
+    @include adaptiveValue("font-size", 14, 10, ($desktopBreakPoint + $tabletBreakPoint)/2, $tabletBreakPoint);
+    @include adaptiveValue("font-size", 14, 10, $tabletBreakPoint, $mobileBreakPoint);
+    @include adaptiveValue("line-height", 20, 15, $maxWidthContainer, $desktopBreakPoint);
+    @include adaptiveValue("line-height", 20, 15, $desktopBreakPoint, ($desktopBreakPoint + $tabletBreakPoint)/2);
+    @include adaptiveValue("line-height", 20, 15, ($desktopBreakPoint + $tabletBreakPoint)/2, $tabletBreakPoint);
+    @include adaptiveValue("line-height", 20, 15, $tabletBreakPoint, $mobileBreakPoint);
+    @include adaptiveValue("flex-basis", 40, 30, $maxWidthContainer, $desktopBreakPoint);
+    @include adaptiveValue("flex-basis", 40, 30, $desktopBreakPoint, ($desktopBreakPoint + $tabletBreakPoint)/2);
+    @include adaptiveValue("flex-basis", 40, 30, ($desktopBreakPoint + $tabletBreakPoint)/2, $tabletBreakPoint);
+    @include adaptiveValue("flex-basis", 40, 30, $tabletBreakPoint, $mobileBreakPoint);
   }
 
   &__row2-of-description-container {
-    // margin-top: 13px;
+    margin-top: 11px;
     flex-basis: 22px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    @include adaptiveValue("margin-top", 11, 7, $maxWidthContainer, $desktopBreakPoint);
+    @include adaptiveValue("margin-top", 11, 7, $desktopBreakPoint, ($desktopBreakPoint + $tabletBreakPoint)/2);
+    @include adaptiveValue("margin-top", 11, 7, ($desktopBreakPoint + $tabletBreakPoint)/2, $tabletBreakPoint);
+    @include adaptiveValue("margin-top", 11, 7, $tabletBreakPoint, $mobileBreakPoint);
+
+    @media (max-width: ($mobileBreakPoint + px)) {
+      margin-top: 9px;
+    }
   }
 
   &__price {
+    flex-shrink: 0;
     @extend %mainFont;
     @include fontz(16px, 22px, 700);
     color: $mainColor1;
   }
 
-  &__new-product-label {
+  &__product-in-stock-label {
+    flex-shrink: 0;
     @extend %mainFont;
     @include fontz(11px, 15px, 500);
     color: $mainColor1;
   }
 
   &__row3-of-description-container {
+    margin-top: 18px;
     flex-basis: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap;
+    gap: 5px;
+
+    @include adaptiveValue("margin-top", 18, 12, $maxWidthContainer, $desktopBreakPoint);
+    @include adaptiveValue("margin-top", 18, 12, $desktopBreakPoint, ($desktopBreakPoint + $tabletBreakPoint)/2);
+    @include adaptiveValue("margin-top", 18, 12, ($desktopBreakPoint + $tabletBreakPoint)/2, $tabletBreakPoint);
+    @include adaptiveValue("margin-top", 18, 12, $tabletBreakPoint, $mobileBreakPoint);
+
+    @media (max-width: ($mobileBreakPoint + px)) {
+      margin-top: 16px;
+    }
   }
 
   &__add-to-cart-btn {
-    padding: 8px 15px 12px;
+    width: 106px;
+    height: 40px;
+    flex-shrink: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid $mainColor2;
     border-radius: 8px;
     @extend %mainFont;
     @include fontz(14px, 20px, 500);
+    transition: all 0.3s linear;
     color: $mainColor1;
+
+    &:hover {
+      background-color: $color2;
+      transform: scale(95%);
+    }
   }
 
   &__add-to-favorite-btn {
-    width: 32px;
-    height: 32px;
-    background: url('https://img.icons8.com/ios-glyphs/30/null/hearts.png') center / 20px 17px no-repeat;
-    // background: url('https://cdn.iconscout.com/icon/premium/png-256-thumb/heart-1420-632443.png?f=avif') center / 20px 17px no-repeat;
-  }
+    flex-shrink: 0;
+    width: 20px;
+    height: 17px;
+    border: none;
+    background-color: transparent;
+    background: url("https://img.icons8.com/ios-glyphs/30/null/hearts.png")
+      center / cover no-repeat;
+      transition: all 0.3s linear;
 
+    &:hover {
+      background: url("https://cdn.iconscout.com/icon/premium/png-256-thumb/heart-1420-632443.png?f=avif")
+      center / cover no-repeat;
+    }
+  }
 }

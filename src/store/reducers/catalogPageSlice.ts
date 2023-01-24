@@ -85,10 +85,6 @@ const catalogPageSlice = createSlice({
   },
 });
 
-export const {
-  setMinPrice,
-  setMaxPrice,
-  toggleSelectedBrand,
-  // deleteSelectedBrand,
-} = catalogPageSlice.actions;
+export const { setMinPrice, setMaxPrice, toggleSelectedBrand } =
+  catalogPageSlice.actions;
 export default catalogPageSlice.reducer;

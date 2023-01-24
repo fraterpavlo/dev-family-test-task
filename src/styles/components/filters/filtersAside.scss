@@ -1,27 +1,79 @@
 .catalog-page__filters {
   flex-basis: 17%;
-  max-width: 224px;
+  max-width: 17%;
+  min-width: 200px;
+
+  @media (max-width: ($tabletBreakPoint + px)) {
+    flex-basis: auto;
+    max-width: 100%;
+    min-width: 150px;
+  }
+
+  @media (max-width: ($mobileBreakPoint + px)) {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    padding: 0 20px; 
+  }
 }
 
 .filters {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 
-  &__total-count-container {}
+  &__total-count-container {
+  }
 
   &__products-category-title {
     margin-top: 5px;
     @extend %mainFont;
     @include fontz(32px, 45px, 700);
     color: $mainColor1;
+
+    @include adaptiveValue("font-size", 32, 24, $maxWidthContainer, $tabletBreakPoint);
+    @include adaptiveValue("line-height", 45, 34, $maxWidthContainer, $tabletBreakPoint);
+ 
+    @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+      margin-top: 4px;
+      @include fontz(24px, 34px, 700);
+      color: red;
+    }
+
+    @media (max-width: ($mobileBreakPoint + px)) {
+      order: 0;
+      margin-top: 0;
+      @include fontz(26px, 36px, 700);
+    }
   }
 
   &__price-filter-container {
     margin-top: 13px;
+    @include adaptiveValue("margin-top", 13, 9, $maxWidthContainer, $tabletBreakPoint);
+
+    @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+      margin-top: 9px;
+    }
+
+    @media (max-width: ($mobileBreakPoint + px)) {
+      margin-top: 18px;
+      order: 2;
+    }
   }
 
   &__brand-filter-container {
     margin-top: 24px;
+    @include adaptiveValue("margin-top", 24, 18, $maxWidthContainer, $tabletBreakPoint);
+
+    @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+      margin-top: 18px;
+    }
+
+    @media (max-width: ($mobileBreakPoint + px)) {
+      margin-top: 24px;
+      order: 3;
+    }
   }
 }
 
@@ -31,23 +83,48 @@
   @extend %mainFont;
   @include fontz(14px, 20px, 500);
   color: $color1;
+  @include adaptiveValue("font-size", 14, 10, $maxWidthContainer, $tabletBreakPoint);
+  @include adaptiveValue("line-height", 20, 15, $maxWidthContainer, $tabletBreakPoint);
+
+  @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+    column-gap: 2px;
+    @include fontz(10px, 15px, 700);
+  }
+
+  @media (max-width: ($mobileBreakPoint + px)) {
+    margin-top: 24px;
+    order: 1;
+  }
 
   &__label {}
 
   &__output {}
 }
 
-
-
 .price-filter {
   display: flex;
   flex-direction: column;
   row-gap: 12px;
+  @include adaptiveValue("row-gap", 12, 9, $maxWidthContainer, $tabletBreakPoint);
+
+  @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+    row-gap: 9px;
+  }
 
   &__label {
     @extend %mainFont;
     @include fontz(16px, 22px, 700);
     color: $mainColor1;
+    @include adaptiveValue("font-size", 16, 12, $maxWidthContainer, $tabletBreakPoint);
+    @include adaptiveValue("line-height", 22, 16, $maxWidthContainer, $tabletBreakPoint);
+
+    @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+      @include fontz(12px, 16px, 700);
+    }
+
+    @media (max-width: ($mobileBreakPoint + px)) {
+      @include fontz(16px, 22px, 700);
+    }
   }
 
   &__inputs-container {
@@ -62,6 +139,17 @@
     @include fontz(14px, 20px, 500);
     color: $mainColor1;
     cursor: pointer;
+    @include adaptiveValue("padding-top", 9, 6, $maxWidthContainer, $tabletBreakPoint);
+    @include adaptiveValue("padding-bottom", 9, 6, $maxWidthContainer, $tabletBreakPoint);
+
+    @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+      padding: 6px 9px;
+      @include fontz(10px, 15px, 700);
+    }
+
+    @media (max-width: ($mobileBreakPoint + px)) {
+      max-width: 112px;
+    }
 
     &_min {
       border-radius: 4px 0 0 4px;
@@ -79,17 +167,33 @@
   display: flex;
   flex-direction: column;
   row-gap: 12px;
+  @include adaptiveValue("row-gap", 12, 9, $maxWidthContainer, $tabletBreakPoint);
+
+  @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+    row-gap: 9px;
+  }
 
   &__label {
     @extend %mainFont;
     @include fontz(16px, 22px, 700);
     color: $mainColor1;
+    @include adaptiveValue("font-size", 16, 12, $maxWidthContainer, $tabletBreakPoint);
+    @include adaptiveValue("line-height", 22, 16, $maxWidthContainer, $tabletBreakPoint);
+
+    @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+      @include fontz(12px, 16px, 700);
+    }
   }
 
   &__brands-list-container {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+    @include adaptiveValue("row-gap", 10, 7, $maxWidthContainer, $tabletBreakPoint);
+
+    @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+      row-gap: 7px;
+    }
   }
 
   &__brands-item {}
@@ -102,6 +206,14 @@
   @include fontz(14px, 20px, 500);
   color: $mainColor1;
   cursor: pointer;
+  @include adaptiveValue("font-size", 14, 10, $maxWidthContainer, $tabletBreakPoint);
+  @include adaptiveValue("line-height", 20, 15, $maxWidthContainer, $tabletBreakPoint);
+  @include adaptiveValue("padding-left", 27, 18, $maxWidthContainer, $tabletBreakPoint);
+
+  @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+    padding-left: 18px;
+    @include fontz(10px, 15px, 500);
+  }
 
   &__input {
 
@@ -119,6 +231,17 @@
       margin-left: -27px;
       border: 1px solid $mainColor2;
       border-radius: 4px;
+      @include adaptiveValue("width", 18, 12, $maxWidthContainer, $tabletBreakPoint);
+      @include adaptiveValue("height", 18, 12, $maxWidthContainer, $tabletBreakPoint);
+      @include adaptiveValue("margin-left", -27, -18, $maxWidthContainer, $tabletBreakPoint);
+      @include adaptiveValue("border-radius", 4, 2, $maxWidthContainer, $tabletBreakPoint);
+
+      @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+        width: 12px;
+        height: 12px;
+        margin-left: -18px;
+        border-radius: 2px;
+      }
     }
 
     &_original:checked+&_custom {
@@ -133,6 +256,11 @@
         height: 100%;
         color: #ffffff;
         font-size: 10px;
+        @include adaptiveValue("font-size", 10, 7, $maxWidthContainer, $tabletBreakPoint);
+
+        @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
+          font-size: 7px;
+        }
       }
     }
 

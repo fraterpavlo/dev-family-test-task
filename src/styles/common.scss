@@ -3,10 +3,10 @@
   margin: 0;
 }
 
-span,
-a {
-  display: inline-block;
-}
+// span,
+// a {
+//   display: inline-block;
+// }
 
 /* box sizing */
 *,
@@ -52,4 +52,9 @@ button {
   max-width: $containerWidth + px;
   padding: 0 20px;
   margin: 0 auto;
+
+  @media (max-width: ($mobileBreakPoint + px)) {
+    padding: 0;
+  }
 }
+

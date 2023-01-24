@@ -7,9 +7,25 @@
   height: 100%;
   display: flex;
   justify-content: flex-start;
-  gap: 24px;
-  @include adaptiveValue("gap", 24, 10, 1300, 1101);
-  @include adaptiveValue("gap", 24, 10, 1100, 801);
-  @include adaptiveValue("gap", 24, 10, 800, 600);
   flex-wrap: wrap;
+  gap: 24px;
+
+  @media (max-width: ($desktopBreakPoint + px)) {
+    gap: 20px;
+  }
+
+  @media (max-width: (($desktopBreakPoint + $tabletBreakPoint)/2 + px)) {
+    gap: 15px;
+  }
+
+  @media (max-width: ($tabletBreakPoint + px)) {
+    gap: 20px;
+  }
+
+  @media (max-width: ($mobileBreakPoint + px)) {
+    padding: 0 20px;
+    flex-direction: column;
+    gap: 0;
+  }
+  
 }

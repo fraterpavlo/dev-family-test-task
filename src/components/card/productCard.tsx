@@ -36,13 +36,13 @@ export function ProductCard(props: ICardProps) {
         <span className="card__title">{props.productData.title}</span>
         <div className="card__row2-of-description-container">
           <span className="card__price">{props.productData.price} ₽</span>
-          {props.productData.is_new && (
-            <span className="card__new-product-label">Новое</span>
+          {props.productData.in_stock && (
+            <span className="card__product-in-stock-label">В наличии</span>
           )}
         </div>
         <div className="card__row3-of-description-container">
           <button className="card__add-to-cart-btn">В корзину</button>
-          <span className="card__add-to-favorite-btn"></span>
+          <button className="card__add-to-favorite-btn"></button>
         </div>
       </div>
     </div>

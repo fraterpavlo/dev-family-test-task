@@ -33,9 +33,6 @@ export function FiltersAside() {
       "price[min]": filters.minPrice ?? "",
       "price[max]": filters.maxPrice ?? "",
     };
-    // const encodedSearchQuery = convertObjToQueryString(queryObj)
-    //   .replace(/%5B/g, "[")
-    //   .replace(/%5D/g, "]");
     const encodedSearchQuery = decodeURI(convertObjToQueryString(queryObj));
 
     const fullQueryPath = `/api/pages/obektivy${
