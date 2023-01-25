@@ -142,6 +142,10 @@
     @include adaptiveValue("padding-top", 9, 6, $maxWidthContainer, $tabletBreakPoint);
     @include adaptiveValue("padding-bottom", 9, 6, $maxWidthContainer, $tabletBreakPoint);
 
+    &:focus {
+      border: 1px solid $color1;
+    }
+
     @media (max-width: ($tabletBreakPoint + px)) and (min-width: ($mobileBreakPoint + px)) {
       padding: 6px 9px;
       @include fontz(10px, 15px, 700);

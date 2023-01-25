@@ -6,12 +6,12 @@ const MyLazyTextInput = (props: ILazyTextInputProps) => {
 
   function onEnterPress(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter") {
-      props.onInputCallBack(inputRef.current!.value);
+      props.onInputCallBack(inputRef.current!);
     }
   }
 
   function onBlur() {
-    props.onInputCallBack(inputRef.current!.value);
+    props.onInputCallBack(inputRef.current!);
   }
 
   return (

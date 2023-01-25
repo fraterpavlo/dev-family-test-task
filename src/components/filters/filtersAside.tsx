@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import {
   fetchProducts,
   setMaxPrice,
@@ -23,8 +23,14 @@ export function FiltersAside() {
 
   // useEffect(() => {
   //   const searchString = queryString.parse(window.location.search);
-  //   console.log(window.location.search);
-  //   console.log(searchString);
+  //   if (searchString["brands[]"]?.includes(EItemValueofBrands.Canon))
+  //     onSelectBrandsCallBack(EItemValueofBrands.Canon);
+  //   if (searchString["brands[]"]?.includes(EItemValueofBrands.Nikon))
+  //     onSelectBrandsCallBack(EItemValueofBrands.Nikon);
+  //   if (searchString["price[max]"])
+  //     onInputMaxPriceCallBack(searchString["price[max]"] as string);
+  //   if (searchString["price[min]"])
+  //     onInputMinPriceCallBack(searchString["price[max]"] as string);
   // }, []);
 
   useEffect(() => {
@@ -35,26 +41,34 @@ export function FiltersAside() {
     };
     const encodedSearchQuery = decodeURI(convertObjToQueryString(queryObj));
 
-    const fullQueryPath = `/api/pages/obektivy${
+    const fullQueryPath = `${
       encodedSearchQuery ? "?" : ""
-    } ${encodedSearchQuery}`;
-    window.history.pushState({}, "", fullQueryPath);
+    }${encodedSearchQuery}`;
 
+    window.history.pushState({}, "", fullQueryPath);
     baseURL.search = encodedSearchQuery;
     dispatch(fetchProducts(baseURL.href));
   }, [filters]);
 
-  const onInputMinPriceCallBack = useCallback((inputValue: string) => {
-    dispatch(setMinPrice(inputValue));
-  }, []);
+  const onInputMinPriceCallBack = (inputEl: HTMLInputElement) => {
+    const value = inputEl.value;
+    const numValue = value.replace(/\D/g, "");
+    if (numValue !== value) inputEl.value = numValue;
 
-  const onInputMaxPriceCallBack = useCallback((inputValue: string) => {
-    dispatch(setMaxPrice(inputValue));
-  }, []);
+    dispatch(setMinPrice(numValue));
+  };
 
-  const onSelectBrandsCallBack = useCallback((brand: string) => {
+  const onInputMaxPriceCallBack = (inputEl: HTMLInputElement) => {
+    const value = inputEl.value;
+    const numValue = value.replace(/\D/g, "");
+    if (numValue !== value) inputEl.value = numValue;
+
+    dispatch(setMaxPrice(numValue));
+  };
+
+  const onSelectBrandsCallBack = (brand: string) => {
     dispatch(toggleSelectedBrand(brand));
-  }, []);
+  };
 
   return (
     <aside className="catalog-page__filters filters">
@@ -88,6 +102,9 @@ export function FiltersAside() {
               className="brand-filter-item__input_original"
               type="checkbox"
               onChange={() => onSelectBrandsCallBack(EItemValueofBrands.Canon)}
+              checked={filters?.selectedBrands.includes(
+                EItemValueofBrands.Canon
+              )}
             />
             <span className="brand-filter-item__input_custom"></span>
             Canon
@@ -97,6 +114,9 @@ export function FiltersAside() {
               className="brand-filter-item__input_original"
               type="checkbox"
               onChange={() => onSelectBrandsCallBack(EItemValueofBrands.Nikon)}
+              checked={filters?.selectedBrands.includes(
+                EItemValueofBrands.Nikon
+              )}
             />
             <span className="brand-filter-item__input_custom"></span>
             Nikon

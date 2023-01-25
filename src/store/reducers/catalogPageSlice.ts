@@ -10,7 +10,6 @@ export const fetchProducts = createAsyncThunk(
       if (!response.ok) throw new Error("Server Error!");
 
       const data = await response.json();
-      console.log(data);
       return {
         products: data.products,
         filters: data.filters,
@@ -53,16 +52,13 @@ const catalogPageSlice = createSlice({
     toggleSelectedBrand(state: IState, action: IAction) {
       const itemValue = action.payload as string;
       const selectedBrandsArr = state.filtersState.selectedBrands;
-      const indexOfItem = selectedBrandsArr.indexOf(itemValue);
 
-      indexOfItem === -1
-        ? (state.filtersState.selectedBrands = [
-            ...selectedBrandsArr,
-            itemValue,
-          ])
-        : (state.filtersState.selectedBrands = selectedBrandsArr.filter(
-            (item) => item !== itemValue
-          ));
+      state.filtersState = {
+        ...state.filtersState,
+        selectedBrands: selectedBrandsArr.includes(itemValue)
+          ? selectedBrandsArr.filter((item) => item !== itemValue)
+          : [...selectedBrandsArr, itemValue],
+      };
     },
     setResultsState(state: IState, action: IAction) {
       state.resultsState = action.payload as IResultsState;
