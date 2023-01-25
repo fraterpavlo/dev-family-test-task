@@ -22,4 +22,4 @@
 
 
 
-# [Нажмите](https://grand-brioche-446411.netlify.app), чтобы открыть приложение.
+# [Нажмите](https://papaya-liger-dd1b79.netlify.app/), чтобы открыть приложение.
