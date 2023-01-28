@@ -10,6 +10,8 @@ export const fetchProducts = createAsyncThunk(
       if (!response.ok) throw new Error("Server Error!");
 
       const data = await response.json();
+      console.log(data);
+      
       return {
         products: data.products,
         filters: data.filters,

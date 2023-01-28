@@ -11,8 +11,8 @@ import {
   convertObjToQueryString,
 } from "../../hooks/hooks";
 import { getFiltersState, getProductsData } from "../../store/selectors";
-import { EItemValueofBrands } from "./filtersAside.model";
-import MyLazyTextInput from "../UI/myLazyTextInput/myLazyTextInput";
+import { mockBrandsFilterData } from "./filtersAside.model";
+import MyLazyNumberInput from "../UI/myLazyNumberInput/myLazyNumberInput";
 import { baseURL } from "../../index";
 // import queryString from "query-string";
 
@@ -50,20 +50,12 @@ export function FiltersAside() {
     dispatch(fetchProducts(baseURL.href));
   }, [filters]);
 
-  const onInputMinPriceCallBack = (inputEl: HTMLInputElement) => {
-    const value = inputEl.value;
-    const numValue = value.replace(/\D/g, "");
-    if (numValue !== value) inputEl.value = numValue;
-
-    dispatch(setMinPrice(numValue));
+  const onInputMinPriceCallBack = (inputValue: string) => {
+    dispatch(setMinPrice(inputValue));
   };
 
-  const onInputMaxPriceCallBack = (inputEl: HTMLInputElement) => {
-    const value = inputEl.value;
-    const numValue = value.replace(/\D/g, "");
-    if (numValue !== value) inputEl.value = numValue;
-
-    dispatch(setMaxPrice(numValue));
+  const onInputMaxPriceCallBack = (inputValue: string) => {
+    dispatch(setMaxPrice(inputValue));
   };
 
   const onSelectBrandsCallBack = (brand: string) => {
@@ -80,13 +72,13 @@ export function FiltersAside() {
       <div className="filters__price-filter-container price-filter">
         <span className="price-filter__label">Цена, ₽</span>
         <div className="price-filter__inputs-container">
-          <MyLazyTextInput
+          <MyLazyNumberInput
             classNames={"price-filter__input price-filter__input_min"}
             defaultValue={filters?.minPrice ?? ""}
             placeholder={"min"}
             onInputCallBack={onInputMinPriceCallBack}
           />
-          <MyLazyTextInput
+          <MyLazyNumberInput
             classNames={"price-filter__input price-filter__input_max"}
             defaultValue={filters?.maxPrice ?? ""}
             placeholder={"max"}
@@ -97,7 +89,23 @@ export function FiltersAside() {
       <div className="filters__brand-filter-container brand-filter">
         <span className="brand-filter__label">Бренд</span>
         <div className="brand-filter__brands-list-container">
-          <label className="brand-filter__brands-item brand-filter-item">
+          {mockBrandsFilterData.map((itemData) => (
+            <label
+              key={itemData.value}
+              className="brand-filter__brands-item brand-filter-item"
+            >
+              <input
+                className="brand-filter-item__input_original"
+                type="checkbox"
+                onChange={() => onSelectBrandsCallBack(itemData.value)}
+                checked={filters?.selectedBrands.includes(itemData.value)}
+              />
+              <span className="brand-filter-item__input_custom"></span>
+              {itemData.title}
+            </label>
+          ))}
+
+          {/* <label className="brand-filter__brands-item brand-filter-item">
             <input
               className="brand-filter-item__input_original"
               type="checkbox"
@@ -120,7 +128,7 @@ export function FiltersAside() {
             />
             <span className="brand-filter-item__input_custom"></span>
             Nikon
-          </label>
+          </label> */}
         </div>
       </div>
     </aside>

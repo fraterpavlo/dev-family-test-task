@@ -1,6 +1,8 @@
 export interface ILazyTextInputProps {
-  onInputCallBack: (inputEl: HTMLInputElement) => void;
+  onInputCallBack: (inputValue: string) => void;
   classNames?: string;
   placeholder?: string;
   defaultValue?: string;
+  minValue?: string;
+  maxValue?: string;
 }

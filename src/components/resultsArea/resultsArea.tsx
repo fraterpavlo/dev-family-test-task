@@ -1,6 +1,7 @@
 import { useAppSelector } from "../../hooks/hooks";
 import { getResultsState } from "../../store/selectors";
 import ProductCard from "../card/productCard";
+import Loader from "../UI/Loader/Loader";
 import { IProductData } from "./resultsArea.model";
 
 export function ResultsArea() {
@@ -13,7 +14,7 @@ export function ResultsArea() {
 
   return (
     <div className={"catalog-page__results-area results-area"}>
-      {!results.isLoaded && <strong>Loading...</strong>}
+      {!results.isLoaded && <Loader />}
       {results.error && <strong>{results.error}</strong>}
       {!results.error && results.isLoaded && cardList}
     </div>

@@ -1,0 +1,10 @@
+.myLazyNumberInput {
+  -moz-appearance: textfield;
+	-webkit-appearance: textfield;
+	appearance: textfield;
+}
+
+.myLazyNumberInput::-webkit-outer-spin-button,
+.myLazyNumberInput::-webkit-inner-spin-button {
+	display: none;
+}
